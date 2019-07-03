@@ -1,10 +1,11 @@
 import React from 'react';
 
+import Directory from '../../directory/Directory.component';
 import './homePage.styles.scss';
 
-const HomePage = () => (
+const Homepage = () => (
     <div className="homepage">
-        <div className="directory-menu">
+        <Directory/> {/* <div className="directory-menu">
             <div className="menu-item">
                 <div className="content">
                     <h1 className="title">HATS</h1>
@@ -35,8 +36,8 @@ const HomePage = () => (
                     <span className="subtitle">Shop Now</span>
                 </div>
             </div>
-        </div>
+        </div> */}
     </div>
 )
 
-export default HomePage;
+export default Homepage;

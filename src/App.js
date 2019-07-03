@@ -1,15 +1,16 @@
 import React from 'react';
 
-import './homePage.component';
+import Homepage from './components/pages/homepage/Homepage.component';
 import './App.css';
-import HomePage from './homePage.component';
 
 function App() {
   return (
     <div>
-      <HomePage/>
+      <Homepage/>
     </div>
   );
 }
 
 export default App;
+
+// K0t0k0li&Kodobi
