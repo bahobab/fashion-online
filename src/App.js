@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
+import Header from './components/header/Heder.component';
 import Homepage from './components/pages/homepage/Homepage.component';
 import ShopPage from './components/pages/shop/ShopPage.component';
 // import CollectionPreview from
@@ -10,11 +11,13 @@ import './App.css';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={Homepage}/>
-      <Route exact path='/shop' component={ShopPage}/>
-
-    </Switch>
+    <div>
+      <Header/>
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route exact path='/shop' component={ShopPage}/>
+      </Switch>
+    </div>
   );
 }
 
