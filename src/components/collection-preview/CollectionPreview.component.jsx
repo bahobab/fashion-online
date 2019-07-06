@@ -4,7 +4,7 @@ import CollectionItem from '../collection-item/CollectionItem.component';
 import './CollectionPreview.styles.scss';
 
 const CollectionPreview = ({items, title}) => {
-    console.log(items);
+    // console.log(items);
     if (!items) {
         return (
             <div>Loading ...</div>
