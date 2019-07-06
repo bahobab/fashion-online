@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
 import directoryReducer from './directory/directory.reducer';
+import shopReducer from './shop/shop.reducer.js';
 
 const persistConfig = {
     key: 'root',
@@ -12,6 +13,6 @@ const persistConfig = {
     whitelist: ['cart'] // from the reducer object below. user is handled by firebase
 }
 
-const rootReducer = combineReducers({user: userReducer, cart: cartReducer, directory: directoryReducer});
+const rootReducer = combineReducers({user: userReducer, cart: cartReducer, directory: directoryReducer, shop: shopReducer});
 
 export default persistReducer(persistConfig, rootReducer)
