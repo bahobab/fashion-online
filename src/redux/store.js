@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga'
 import {persistStore} from 'redux-persist';
 
 import rootReducer from './root-reducer';
-import {fetchCollectionsStart} from './shop/shop.sagas';
+import rootSaga from './root-saga';
 
 // const middlewares = [thunk];
 const sagaMiddleware = createSagaMiddleware()
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
-sagaMiddleware.run(fetchCollectionsStart);
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
