@@ -21,8 +21,14 @@ class ShopPage extends React.Component {
 
     componentDidMount() {
         const collectionRef = firestore.collection('collections');
-        this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
-            // console.log(snapshot);
+        
+        // fetch('https://firestore.googleapis.com/v1/projects/kfashion-db/databases/(default)/documents/')
+        // .then(response => response.json())
+        // .then(collections => console.log(collections));
+
+        // this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+
+        collectionRef.get().then(snapshot => {
             const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
             this.props.updateCollections(collectionsMap);
             this.setState({isLoading: false});
