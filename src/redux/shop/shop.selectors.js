@@ -13,8 +13,12 @@ export const selectShopCollection = collectionUrlParam => createSelector([select
 
 export const selectCollectionFetching = createSelector(
     [selectShop], shop => shop.isFetching
-    );
-    
+);
+
+export const selectIsCollectionsLoaded = createSelector(
+    [selectShop], shop => !!shop.collections
+);
+
     // export const selectShopCollection = collectionUrlParam =>
     // createSelector([selectShopCollections], collections =>
     // collections.find(collection => collection.id ===
