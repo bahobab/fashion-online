@@ -11,7 +11,7 @@ export const selectCollectionsForPreview = createSelector([selectShopCollections
 
 export const selectShopCollection = collectionUrlParam => createSelector([selectShopCollections], collections => collections? collections[collectionUrlParam] : null); // after data normalization
 
-export const selectCollectionFetching = createSelector(
+export const selectIsCollectionFetching = createSelector(
     [selectShop], shop => shop.isFetching
 );
 
