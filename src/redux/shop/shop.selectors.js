@@ -9,8 +9,13 @@ export const selectShopCollections = createSelector([selectShop], shop => shop.c
 
 export const selectCollectionsForPreview = createSelector([selectShopCollections], collections => collections ? Object.keys(collections).map(key => collections[key]) : []);
 
-// export const selectShopCollection = collectionUrlParam =>
-// createSelector([selectShopCollections], collections =>
-// collections.find(collection => collection.id ===
-// COLLECTION_ID_MAP[collectionUrlParam]));
 export const selectShopCollection = collectionUrlParam => createSelector([selectShopCollections], collections => collections? collections[collectionUrlParam] : null); // after data normalization
+
+export const selectCollectionFetching = createSelector(
+    [selectShop], shop => shop.isFetching
+    );
+    
+    // export const selectShopCollection = collectionUrlParam =>
+    // createSelector([selectShopCollections], collections =>
+    // collections.find(collection => collection.id ===
+    // COLLECTION_ID_MAP[collectionUrlParam]));
