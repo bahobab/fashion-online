@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { signUpStart } from "../../redux/user/user.actions";
@@ -9,83 +9,78 @@ import CustomButton from "../custom-button/CustomButton.component";
 
 import "./SignUp.styles.scss";
 
-class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
+// class SignUp extends React.Component {
+const SignUp = ({ onSignUpStart }) => {
+  const [userInfo, setUserInfo] = useState({
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
 
-    this.state = {
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    };
-  }
+  const { displayName, email, password, confirmPassword } = userInfo;
 
-  handleSubmit = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-
-    const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
       alert("Passwords dont match!!!");
       return;
     }
 
-    this.props.onSignUpStart({ displayName, email, password });
+    onSignUpStart({ displayName, email, password });
     // const {user} = await auth.createUserWithEmailAndPassword(email, password);
     // await createUserProfileDocument(user, {displayName});
   };
 
-  handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
-  render() {
-    return (
-      <div className="sign-up">
-        <h2 className="title">I do not have an account</h2>
-        <span>Sign up with an email and password</span>
-        <form className="sign-up-form" onSubmit={this.handleSubmit}>
-          <FormInput
-            type="text"
-            name="displayName"
-            value={this.state.displayName}
-            label="Display name"
-            onChange={this.handleChange}
-            required
-          />
-          <FormInput
-            type="email"
-            name="email"
-            value={this.state.email}
-            label="email"
-            onChange={this.handleChange}
-            required
-          />
-          <FormInput
-            type="password"
-            name="password"
-            value={this.state.password}
-            label="password"
-            onChange={this.handleChange}
-            required
-          />
-          <FormInput
-            type="password"
-            name="confirmPassword"
-            value={this.state.confirmPassword}
-            label="confirm Password"
-            onChange={this.handleChange}
-            required
-          />
+  return (
+    <div className="sign-up">
+      <h2 className="title">I do not have an account</h2>
+      <span>Sign up with an email and password</span>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
+        <FormInput
+          type="text"
+          name="displayName"
+          value={displayName}
+          label="Display name"
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          type="email"
+          name="email"
+          value={email}
+          label="email"
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          type="password"
+          name="password"
+          value={password}
+          label="password"
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          label="confirm Password"
+          onChange={handleChange}
+          required
+        />
 
-          <CustomButton type="submit">SIGN UP</CustomButton>
-        </form>
-      </div>
-    );
-  }
-}
+        <CustomButton type="submit">SIGN UP</CustomButton>
+      </form>
+    </div>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   onSignUpStart: userCredentials => dispatch(signUpStart(userCredentials))
