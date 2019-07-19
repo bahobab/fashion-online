@@ -26,14 +26,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload
       };
-    // case UserActionTypes.SIGN_UP_SUCCESS:
-    //     return {
-    //         ...state,
-    //         error: null,
-    //         currentUser: action.payload
-    //     }
     default:
-    case UserActionTypes.SIGN_UP_SUCCESS:
       return state;
   }
 };
